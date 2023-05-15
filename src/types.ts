@@ -4,10 +4,9 @@ export type Blok = {
   _uid: string;
   _editable: string;
   component: string;
-  [key: string]: any;
-}
-
-export type Blocks = [Blok];
+  [key: string]: unknown;
+  url?: Link;
+} & Record<string, unknown>;
 
 export type Link = {
   id: string;
@@ -20,9 +19,7 @@ export type Link = {
   story?: ISbStoryData;
 }
 
-export type Text = {
-  [key: string]: string;
-}
+export type Text = string;
 
 export type TextArea = Text;
 export type DateTime = Text;

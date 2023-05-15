@@ -1,4 +1,4 @@
-import { storyblokEditable } from "@storyblok/react";
+import { SbBlokData, storyblokEditable } from "@storyblok/react";
 import  RouterLink from 'next/link';
 import type { Blok, Link } from '@/types'
 import { inEditor } from '@/helpers';
@@ -27,9 +27,9 @@ export default function Link(props: Props) {
   return (
     <RouterLink
       href={url(props.blok.url as Link)}
-      {...storyblokEditable(props.blok)}
+      {...storyblokEditable(props.blok as SbBlokData)}
     >
-        {props.blok.title}
+        {props.blok.title as string}
     </RouterLink>
   );
 }

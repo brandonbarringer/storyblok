@@ -9,7 +9,7 @@ import React from 'react';
 
 export default function DefaultLayout({globals, children}: {globals: ISbStoryData, children: React.ReactNode}) {
   const story = useStoryblokState(globals);
-  const { primary_navigation }= story.content;
+  const { primary_navigation } = story.content;
   return (
     <>
       <PrimaryNavigation blok={primary_navigation} />

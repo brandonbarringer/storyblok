@@ -4,9 +4,15 @@ import {
   StoryblokComponent,
   useStoryblokState
 } from '@storyblok/react'
+import DefaultLayout from '@/layouts/default';
 import type { ISbStoriesParams, ISbStoryData } from '@storyblok/react'
 
-export default function Page({ story: initialStory }: { story: ISbStoryData }) {
+interface Props {
+  story: ISbStoryData;
+  globals: ISbStoryData;
+}
+
+export default function Page({ story: initialStory, globals }: Props) {
   const story = useStoryblokState(initialStory);
 
   return (
@@ -15,9 +21,11 @@ export default function Page({ story: initialStory }: { story: ISbStoryData }) {
         <title>{story ? story.name : "My Site"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {story?.content &&
-        <StoryblokComponent blok={story.content} />
-      }
+      <DefaultLayout globals={globals}>
+        {story?.content &&
+          <StoryblokComponent blok={story.content} />
+        }
+      </DefaultLayout>
     </div>
   );
 }
@@ -37,11 +45,13 @@ export async function getStaticProps(params: Params) {
 
   const storyblokApi = getStoryblokApi();
   let { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+  const { data: globalData } = await storyblokApi.get(`cdn/stories/global/theme-options`, sbParams);
 
   return {
     props: {
       story: data ? data.story : false,
       key: data ? data.story.id : false,
+      globals: globalData ? globalData.story : false,
     },
     revalidate: 3600,
   };

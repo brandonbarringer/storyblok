@@ -8,8 +8,6 @@ import DefaultLayout from '@/layouts/default';
 import type { ISbStoriesParams, ISbStoryData } from '@storyblok/react'
 
 export async function getStaticProps() {
-  // home is the default slug for the homepage in Storyblok
-  const slug = "home";
 
   const storiesParams: ISbStoriesParams = {
     version: "draft", // or 'published'

@@ -1,12 +1,24 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import Image from '../Image';
+import type { Blok, Asset, Text, TextArea } from '@/types';
 
-export default function Hero({ blok }: { blok: any }) {
+export default function TextMedia({ blok }: { blok: any }) {
+  const {
+    media,
+    title,
+    text,
+  }: {
+    media: Asset;
+    title: Text;
+    text: TextArea;
+  } = blok;
+  
   return (
-    <>
-    <pre>
-      {JSON.stringify(blok, null, 2)}
-    </pre>
-    </>
+    <div className="text-media">
+      <h2>Text Media</h2>
+      media: <Image {...media} /> <br/>
+      title: {title} <br/>
+      text: {text} <br/>
+    </div>
   );
 }
