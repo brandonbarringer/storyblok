@@ -1,6 +1,11 @@
 import type { AppProps } from 'next/app'
 import { storyblokInit, apiPlugin } from '@storyblok/react';
 import Page from '@/components/storyblok/Page';
+import Global from '@/components/storyblok/Global';
+import Link from '@/components/storyblok/Link';
+import Hero from '@/components/storyblok/Hero';
+import TextMedia from '@/components/storyblok/TextMedia';
+import BasicBlok from '@/components/storyblok/BasicBlok';
 
 /**
  * Next.js uses the App component to initialize pages. You can override it and control the page initialization.
@@ -13,7 +18,12 @@ import Page from '@/components/storyblok/Page';
  */
 
 const components = {
-  'page': Page,
+  Page,
+  Global,
+  Link,
+  Hero,
+  TextMedia,
+  BasicBlok
 }
 
 storyblokInit({
