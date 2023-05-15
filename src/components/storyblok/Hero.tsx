@@ -3,10 +3,8 @@ import Image from '../Image';
 
 export default function Hero({ blok }: { blok: any }) {
   return (
-    <>
-    <pre>
+    <pre {...storyblokEditable}>
       {JSON.stringify(blok, null, 2)}
     </pre>
-    </>
   );
 }

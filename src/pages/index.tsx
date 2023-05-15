@@ -4,6 +4,7 @@ import {
   StoryblokComponent,
   useStoryblokState
 } from '@storyblok/react'
+import DefaultLayout from '@/layouts/default';
 import type { ISbStoriesParams, ISbStoryData } from '@storyblok/react'
 
 export async function getStaticProps() {
@@ -15,18 +16,25 @@ export async function getStaticProps() {
   };
 
   const storyblokApi = getStoryblokApi();
-  const { data } = await storyblokApi.get(`cdn/stories/${slug}`, storiesParams);
+  const { data: storyData } = await storyblokApi.get(`cdn/stories/home`, storiesParams);
+  const { data: globalData } = await storyblokApi.get(`cdn/stories/global/theme-options`, storiesParams);
 
   return {
     props: {
-      story: data ? data.story : false,
-      key: data ? data.story.id : false,
+      story: storyData ? storyData.story : false,
+      globals: globalData ? globalData.story : false,
+      key: storyData ? storyData.story.id : false,
     },
     revalidate: 60 // seconds
   };
 }
 
-export default function Home({ story: initialStory }: { story: ISbStoryData }) {
+interface Props {
+  story: ISbStoryData;
+  globals: ISbStoryData;
+}
+
+export default function Home({ story: initialStory, globals }: Props) {
   const story = useStoryblokState(initialStory);
   return (
     <>
@@ -34,9 +42,11 @@ export default function Home({ story: initialStory }: { story: ISbStoryData }) {
         <title>Homepage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {story?.content &&
-        <StoryblokComponent blok={story.content} />
-      }
+      <DefaultLayout globals={globals}>
+        {story?.content &&
+          <StoryblokComponent blok={story.content} />
+        }
+      </DefaultLayout>
     </>
   )
 }
