@@ -16,8 +16,6 @@ export default function Hero({ blok }: { blok: any }) {
     buttons: Blok[];
   } = blok;
 
-  console.log(blok.buttons[0].url);
-
   const imageEls = images.map((image: Asset) => (
     <Image {...image}  key={image.id}/>
   ));

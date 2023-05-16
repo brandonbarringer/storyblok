@@ -7,6 +7,8 @@ import Hero from '@/components/storyblok/Hero';
 import TextMedia from '@/components/storyblok/TextMedia';
 import BasicBlok from '@/components/storyblok/BasicBlok';
 import RichText from '@/components/storyblok/RichText';
+import Callouts from '@/components/storyblok/Callouts';
+import Callout from '@/components/storyblok/Callout';
 /**
  * Next.js uses the App component to initialize pages. You can override it and control the page initialization.
  * Which allows you to do amazing things like:
@@ -24,7 +26,9 @@ const components = {
   Hero,
   TextMedia,
   BasicBlok,
-  RichText
+  RichText,
+  Callouts,
+  Callout
 }
 
 storyblokInit({
