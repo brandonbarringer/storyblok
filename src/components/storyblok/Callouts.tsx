@@ -11,8 +11,8 @@ export default function Callouts(props: Props) {
       <ul>
         {
           props.blok.items.map((nestedBlok: any) => (
-            <li>
-              <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+            <li key={nestedBlok._uid}>
+              <StoryblokComponent blok={nestedBlok}  />
             </li>
           ))
         }

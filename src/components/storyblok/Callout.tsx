@@ -14,8 +14,6 @@ export default function Calllout({ blok }: { blok: any }) {
     text: TextArea;
     button: Blok[];
   } = blok;
-
-  console.log(blok)
   
   return (
     <div className="text-media">
