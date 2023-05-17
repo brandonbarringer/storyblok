@@ -1,14 +1,22 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import PrimaryNavigation from '../navigation/Primary';
 import Image from '../Image';
+import type { Blok, Asset } from '@/types';
 
-export default function Global({ blok }: { blok: any }) {
+interface Props {
+  blok: {
+    logo: Asset;
+    primary_navigation: Blok[];
+  } & Blok;
+}
+
+export default function Global({ blok: { logo, primary_navigation } }: Props) {
   return (
-    <div {...storyblokEditable}>
-    <Image {...blok.logo} />
-    <PrimaryNavigation blok={blok.primary_navigation} />
+    <div>
+    <Image {...logo} />
+    <PrimaryNavigation blok={primary_navigation} />
     <pre>
-      {JSON.stringify(blok, null, 2)}
+      {JSON.stringify({...logo, ...primary_navigation}, null, 2)}
     </pre>
     </div>
   );

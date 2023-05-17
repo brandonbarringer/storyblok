@@ -12,6 +12,12 @@ interface Props {
   globals: ISbStoryData;
 }
 
+interface Params {
+  params: {
+    slug: string[]
+  }
+}
+
 export default function Page({ story: initialStory, globals }: Props) {
   const story = useStoryblokState(initialStory);
 
@@ -28,12 +34,6 @@ export default function Page({ story: initialStory, globals }: Props) {
       </DefaultLayout>
     </div>
   );
-}
-
-type Params = {
-  params: {
-    slug: string[]
-  }
 }
 
 export async function getStaticProps(params: Params) {

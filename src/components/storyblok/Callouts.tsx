@@ -1,18 +1,21 @@
 import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
+import type { Blok } from '@/types';
 
 interface Props {
-  blok: any; 
+  blok: {
+    items: Blok[];
+  } & Blok;
 }
 
-export default function Callouts(props: Props) {
+export default function Callouts({ blok: { items: callouts } }: Props) {
   return (
-    <div {...storyblokEditable}>
+    <div>
       <h2>Callouts</h2>
       <ul>
         {
-          props.blok.items.map((nestedBlok: any) => (
-            <li key={nestedBlok._uid}>
-              <StoryblokComponent blok={nestedBlok}  />
+          callouts.map((callout: Blok) => (
+            <li key={callout._uid} {...storyblokEditable(callout)}>
+              <StoryblokComponent blok={callout}  />
             </li>
           ))
         }

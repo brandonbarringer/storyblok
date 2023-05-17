@@ -4,7 +4,10 @@ import type { Blok, Link } from '@/types'
 import { inEditor } from '@/helpers';
 
 interface Props {
-  blok: Blok;
+  blok: {
+    title: string;
+    url: Link;
+  } & Blok;
 }
 
 function url(url: Link) {
@@ -23,13 +26,14 @@ function url(url: Link) {
   }
 }
 
-export default function Link(props: Props) {
+export default function Link({ blok: link }: Props & { blok: SbBlokData}) {
   return (
     <RouterLink
-      href={url(props.blok.url as Link)}
-      {...storyblokEditable(props.blok as SbBlokData)}
+      href={url(link.url)}
+      {...storyblokEditable(link)}
+      key={link._uid}
     >
-        {props.blok.title as string}
+        {link.title}
     </RouterLink>
   );
 }

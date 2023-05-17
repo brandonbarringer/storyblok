@@ -1,35 +1,39 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import Image from '../Image';
 import Link from './Link';
-import type { Asset, Blok, Text } from "@/types"
+import type { Asset, Blok, Text, Link as tLink } from "@/types"
 
-export default function Hero({ blok }: { blok: any }) {
-  const {
-    title,
-    text,
-    images,
-    buttons,
-  }: {
+
+type Button = {
+  title: Text;
+  url: tLink;
+} & Blok;
+
+interface Props {
+  blok: {
     title: Text;
     text: Text;
     images: Asset[];
-    buttons: Blok[];
-  } = blok;
+    buttons: Button[];
+  } & Blok;
+}
 
-  const imageEls = images.map((image: Asset) => (
+export default function Hero({ blok: hero }: Props) {
+
+  const imageEls = hero.images.map((image: Asset) => (
     <Image {...image}  key={image.id}/>
   ));
 
-  const buttonEls = buttons.map((button: Blok) => (
-    <Link blok={button} key={button._uid}/>
+  const buttonEls = hero.buttons.map((button: Button) => (
+    <StoryblokComponent blok={button} key={button._uid} />
   ));
 
   return (
-    <div className='hero'>
+    <div className='hero' {...storyblokEditable(hero)} key={hero._uid}>
       <h2>Hero</h2>
       images: {imageEls} <br/>
-      title: {title} <br/>
-      text: {text} <br/>
+      title: {hero.title} <br/>
+      text: {hero.text} <br/>
       buttons: {buttonEls} <br/>
     </div>
   );

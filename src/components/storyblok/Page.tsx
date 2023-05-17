@@ -1,12 +1,19 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import Container from '../Container';
+import type { Blok } from '@/types';
 
-export default function Page({ blok }: { blok: any }) {
+interface Props {
+  blok: {
+    body: Blok[];
+  } & Blok;
+}
+
+export default function Page({ blok: page }: Props) {
   return (
-    <main {...storyblokEditable(blok)}>
+    <main {...storyblokEditable(page)} key={page._uid}>
       <Container size="small">
         {
-          blok.body.map((nestedBlok: any) => (
+          page.body.map((nestedBlok: Blok) => (
             <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
           ))
         }

@@ -1,12 +1,15 @@
-import type { ISbStoryData } from '@storyblok/react';
+import type { ISbStoryData, SbBlokData } from '@storyblok/react';
+
+export type Component = {
+  blok: Blok;
+}
 
 export type Blok = {
   _uid: string;
   _editable: string;
   component: string;
-  [key: string]: unknown;
   url?: Link;
-} & Record<string, unknown>;
+} & SbBlokData;
 
 export type Link = {
   id: string;

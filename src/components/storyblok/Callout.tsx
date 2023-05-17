@@ -2,27 +2,24 @@ import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import Image from '../Image';
 import type { Blok, Asset, Text, TextArea } from '@/types';
 
-export default function Calllout({ blok }: { blok: any }) {
-  const {
-    image,
-    title,
-    text,
-    button
-  }: {
+interface Props {
+  blok: {
     image: Asset;
     title: Text;
     text: TextArea;
     button: Blok[];
-  } = blok;
-  
+  } & Blok;    
+}
+
+export default function Calllout({ blok: callout }: Props) {
   return (
-    <div className="text-media">
-      media: <Image {...image} /> <br/>
-      title: {title} <br/>
-      text: {text} <br/>
+    <div {...storyblokEditable(callout)} key={callout._uid}>
+      media: <Image {...callout.image} /> <br/>
+      title: {callout.title} <br/>
+      text: {callout.text} <br/>
       button: &nbsp;
       {
-        button.map((nestedBlok: Blok) => (
+        callout.button.map((nestedBlok: Blok) => (
           <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
         ))
       }
