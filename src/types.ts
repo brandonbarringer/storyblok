@@ -4,12 +4,7 @@ export type Component = {
   blok: Blok;
 }
 
-export type Blok = {
-  _uid: string;
-  _editable: string;
-  component: string;
-  url?: Link;
-} & SbBlokData;
+export type Blok = SbBlokData;
 
 export type Link = {
   id: string;
@@ -23,20 +18,14 @@ export type Link = {
 }
 
 export type Text = string;
-
 export type TextArea = Text;
 export type DateTime = Text;
 export type Markdown = Text;
 export type Number = Text;
 export type SingleOption = Text;
-
-export type Boolean = {
-  [key: string]: boolean;
-}
-
-export type MultiOption = {
-  [key: string]: string[];
-};
+export type Boolean =  boolean;
+export type MultiOption = string[];
+export type MultiAssets = Asset[];
 
 export type Asset = {
   id: number;
@@ -51,10 +40,6 @@ export type Asset = {
   meta_data: {[key:string]: any};
   is_external_url: boolean;
   content_type: string;
-}
-
-export type MultiAssets = {
-  [key: string]: Asset[];
 }
 
 export type TableItem = {
