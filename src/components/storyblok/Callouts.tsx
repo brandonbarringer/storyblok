@@ -14,7 +14,7 @@ export default function Callouts({ blok: { items: callouts } }: Props) {
       <ul>
         {
           callouts.map((callout: Blok) => (
-            <li key={callout._uid} {...storyblokEditable(callout)}>
+            <li key={callout._uid} {...storyblokEditable(callout)} data-test="callouts">
               <StoryblokComponent blok={callout}  />
             </li>
           ))

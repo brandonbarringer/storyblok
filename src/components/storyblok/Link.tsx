@@ -32,6 +32,7 @@ export default function Link({ blok: link }: Props & { blok: SbBlokData}) {
       href={url(link.url)}
       {...storyblokEditable(link)}
       key={link._uid}
+      data-test="link"
     >
         {link.title}
     </RouterLink>

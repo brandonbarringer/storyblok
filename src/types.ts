@@ -37,7 +37,7 @@ export type Asset = {
   filename: string;
   copyright: string;
   fieldtype: string;
-  meta_data: {[key:string]: any};
+  meta_data: { [key:string]: any };
   is_external_url: boolean;
   content_type: string;
 }

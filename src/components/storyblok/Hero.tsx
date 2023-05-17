@@ -1,6 +1,5 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import Image from '../Image';
-import Link from './Link';
 import type { Asset, Blok, Text, Link as tLink } from "@/types"
 
 
@@ -29,7 +28,7 @@ export default function Hero({ blok: hero }: Props) {
   ));
 
   return (
-    <div className='hero' {...storyblokEditable(hero)} key={hero._uid}>
+    <div className='hero' {...storyblokEditable(hero)} key={hero._uid} data-test="hero">
       <h2>Hero</h2>
       images: {imageEls} <br/>
       title: {hero.title} <br/>

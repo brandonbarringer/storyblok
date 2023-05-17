@@ -10,7 +10,7 @@ interface Props {
 
 export default function Page({ blok: page }: Props) {
   return (
-    <main {...storyblokEditable(page)} key={page._uid}>
+    <main {...storyblokEditable(page)} key={page._uid} data-test="page">
       <Container size="small">
         {
           page.body.map((nestedBlok: Blok) => (

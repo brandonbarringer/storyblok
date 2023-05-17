@@ -15,7 +15,7 @@ interface Props {
 
 export default function TextMedia({ blok: tm }: Props) {
   return (
-    <div className="text-media" {...storyblokEditable(tm)} key={tm._uid}>
+    <div className="text-media" {...storyblokEditable(tm)} key={tm._uid} data-test="text-media">
       <h2>Text Media</h2>
       media: <Image {...tm.media} /> <br/>
       title: {tm.title} <br/>

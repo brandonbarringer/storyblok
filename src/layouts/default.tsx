@@ -1,9 +1,6 @@
-import {
-  getStoryblokApi,
-  useStoryblokState
-} from '@storyblok/react'
+import { useStoryblokState } from '@storyblok/react'
 import PrimaryNavigation from '@/components/navigation/Primary'
-import type { ISbStoriesParams, ISbStoryData } from '@storyblok/react'
+import type { ISbStoryData } from '@storyblok/react'
 import React from 'react';
 
 

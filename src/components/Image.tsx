@@ -1,6 +1,3 @@
-import { storyblokEditable } from "@storyblok/react";
-import RouterLink from 'next/link';
-import { inEditor } from '@/helpers';
 import NextImage from 'next/image';
 import type { Asset } from '@/types';
 

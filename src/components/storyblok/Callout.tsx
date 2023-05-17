@@ -13,7 +13,7 @@ interface Props {
 
 export default function Calllout({ blok: callout }: Props) {
   return (
-    <div {...storyblokEditable(callout)} key={callout._uid}>
+    <div {...storyblokEditable(callout)} key={callout._uid} data-test="callout">
       media: <Image {...callout.image} /> <br/>
       title: {callout.title} <br/>
       text: {callout.text} <br/>
